@@ -27,7 +27,7 @@ const SCHEMA = {
 `$ npm install --save jsonschema-nodewalker`
 
 ```js
-const walkNodes = require('jsonschema-nodewalker');
+const walkNodes = require('jsonschema-nodewalker').walkNodes;
 
 walkNodes(SCHEMA, (node, {name} = {}) => console.log('Hello from:', name));
 ```
@@ -43,3 +43,8 @@ The logger example above gives us an output of:
 `Hello from: undefined`
 `Hello from: name`
 `Hello from: gender`
+
+If you have a usecase that requires you to modify the nodes in a way that you
+couldn't do by editing the node directly (i.e. the jsonschema has been fronzen)
+or is otherwise immutable, you can use `modifyNodes` instead of `walkNodes`,
+for which the value returned from `onNode` will be used to replace the node.
