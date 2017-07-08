@@ -1,0 +1,28 @@
+{
+  "name": "jsonschema-nodewalker",
+  "version": "1.0.0",
+  "description": "Walk the nodes in jsonschema.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralusek/jsonschema-nodewalker.git"
+  },
+  "keywords": [
+    "jsonschema",
+    "schema",
+    "walk",
+    "crawl",
+    "json-schema",
+    "json",
+    "node"
+  ],
+  "author": "Tomas Savigliano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralusek/jsonschema-nodewalker/issues"
+  },
+  "homepage": "https://github.com/ralusek/jsonschema-nodewalker#readme"
+}
