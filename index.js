@@ -46,6 +46,8 @@ function modifyNodes(node, onNode, meta) {
       node.properties[prop] = modifyNodes(node.properties[prop], onNode, meta);
     }
   }
+
+  return node;
 }
 
 module.exports.modifyNodes = modifyNodes;
