@@ -1,5 +1,11 @@
+Traverse JSON Schema from bottom up. Allows altering of structure or reformatting
+to match other schema formats, even if the structure is immutable, as values
+return in `onNode` callback will be placed at the node's position in a newly
+formatted structure.
+
+
 Given the following schema:
-```
+```javascript
 const SCHEMA = {
   type: 'object',
   properties: {
@@ -26,25 +32,18 @@ const SCHEMA = {
 
 `$ npm install --save jsonschema-nodewalker`
 
-```js
-const walkNodes = require('jsonschema-nodewalker').walkNodes;
+```javascript
+const walkNodes = require('jsonschema-nodewalker');
 
-walkNodes(SCHEMA, (node, {name} = {}) => console.log('Hello from:', name));
 ```
 
-That's it! You can do whatever you'd like in the `onNode` callback, here we're
-just logging the value out, but you could of course modify the node or anything
-else.
+To simply walk the nodes, we call:
 
-The logger example above gives us an output of:
-`Hello from: undefined`
-`Hello from: title`
-`Hello from: actors`
-`Hello from: undefined`
-`Hello from: name`
-`Hello from: gender`
-
-If you have a usecase that requires you to modify the nodes in a way that you
-couldn't do by editing the node directly (i.e. the jsonschema has been fronzen)
-or is otherwise immutable, you can use `modifyNodes` instead of `walkNodes`,
-for which the value returned from `onNode` will be used to replace the node.
+```javascript
+walkNodes(SCHEMA, (node, meta) => {
+  // `node` will contain the schema node we're currently on
+  // `meta` will contain metadata about the current node, such as whether it is
+  // required, whether it is an array item, as well as the structures that its
+  // children returned from their onNode functions.
+});
+```
