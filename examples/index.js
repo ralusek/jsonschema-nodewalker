@@ -1,6 +1,6 @@
 'use strict';
 
-const walkNodes = require('..');
+const walkNodes = require('../lib');
 
 const schema = {
   type: 'object',
